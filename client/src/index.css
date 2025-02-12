@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+.gradient-background {
+    background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
+    background-clip: text;
+    background-size: 180% 180%;
+    animation: gradient-animation 18s ease infinite;
+    color: transparent;
+  }
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 100s linear infinite;
+  }
+  
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.user {
+  @apply m-2 px-5 py-2 bg-[#1d2539] rounded-2xl text-right self-end max-w-[70%] min-h-auto;
+}
+
+.message{
+  @apply m-2 px-5 py-2  rounded-2xl text-left self-start;
+
+}
