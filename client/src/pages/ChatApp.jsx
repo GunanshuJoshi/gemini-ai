@@ -20,10 +20,6 @@ const ChatApp = () => {
     },
   });
 
-  useEffect(() => {
-    console.log("🚀 ~ ChatApp ~ data:", data);
-  }, [data]);
-
   return (
     <div className="h-screen flex flex-col w-full items-center">
       <div className="h-full w-full flex flex-col items-center ">
@@ -38,6 +34,7 @@ const ChatApp = () => {
                     <>
                       {mes.img && (
                         <IKImage
+                          key={i}
                           urlEndpoint={
                             import.meta.env.VITE_IMAGE_KIT_API_ENDPOINT
                           }
