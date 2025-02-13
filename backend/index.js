@@ -70,7 +70,7 @@ const startServer = async () => {
   const port = process.env.PORT || 3000;
   try {
     await connect();
-    app.listen(port, "0.0.0.0", () => {
+    app.listen(port, () => {
       console.log(`✅ Server running on port ${port}`);
     });
   } catch (error) {
