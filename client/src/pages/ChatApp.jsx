@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import Markdown from "react-markdown";
 import { IKImage } from "imagekitio-react";
+import { useAuth } from "@clerk/clerk-react";
 const ChatApp = () => {
   const { getToken } = useAuth();
   const { id } = useParams();
