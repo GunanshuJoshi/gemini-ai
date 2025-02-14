@@ -31,7 +31,8 @@ const connect = async () => {
 const app = express();
 
 // Remove trailing slash from CLIENT_URL if it exists
-const clientUrl = process.env.CLIENT_URL?.replace(/\/$/, '');
+const clientUrl = process.env.CLIENT_URL?.replace(/\/$/, "");
+console.log("🚀 ~ clientUrl:", clientUrl);
 
 app.use(
   cors({
@@ -39,7 +40,7 @@ app.use(
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    exposedHeaders: ['set-cookie'],
+    exposedHeaders: ["set-cookie"],
   })
 );
 
@@ -53,7 +54,7 @@ app.get("/", (req, res) => {
 const router = express.Router();
 app.use("/api", router);
 
-router.get("/test", requireAuth(), (req, res) => {
+router.get("/test", (req, res) => {
   res.send("Success!!");
 });
 

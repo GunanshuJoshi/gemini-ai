@@ -16,6 +16,24 @@ if (!PUBLISHABLE_KEY) {
 
 const queryClient = new QueryClient();
 const RootLayout = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log(
+        "🚀 ~ useEffect ~ import.meta.env.VITE_BACKEND_URL:",
+        import.meta.env.VITE_BACKEND_URL
+      );
+
+      try {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/test`);
+        console.log("🚀 ~ useEffect ~ res:", res);
+      } catch (error) {
+        console.error("🚀 ~ useEffect ~ error:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const navigate = useNavigate();
   return (
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
