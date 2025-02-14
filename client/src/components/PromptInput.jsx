@@ -5,6 +5,7 @@ import Model from "../lib/gemini";
 import Markdown from "react-markdown";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { X } from "lucide-react";
+import { useAuth } from "@clerk/clerk-react";
 
 const URL = import.meta.env.VITE_IMAGE_KIT_API_ENDPOINT;
 
@@ -16,6 +17,7 @@ const initialImageState = {
 };
 
 const PromptInput = ({ data }) => {
+  const { getToken } = useAuth();
   const [img, setImg] = useState(initialImageState);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -49,6 +51,7 @@ const PromptInput = ({ data }) => {
   // Mutation for updating chat
   const mutation = useMutation({
     mutationFn: async () => {
+      const token = await getToken();
       const response = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/api/chats/${data._id}`,
         {
@@ -56,6 +59,8 @@ const PromptInput = ({ data }) => {
           credentials: "include",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+            
           },
           body: JSON.stringify({
             question: question || undefined,
