@@ -29,19 +29,28 @@ const connect = async () => {
 };
 
 const app = express();
+
+// Remove trailing slash from CLIENT_URL if it exists
+const clientUrl = process.env.CLIENT_URL?.replace(/\/$/, '');
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: clientUrl,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    exposedHeaders: ['set-cookie'],
   })
 );
 
 app.use(express.json());
 
-const router = express.Router();
+// Add root route
+app.get("/", (req, res) => {
+  res.json({ message: "Server is running" });
+});
 
+const router = express.Router();
 app.use("/api", router);
 
 router.get("/test", requireAuth(), (req, res) => {
@@ -49,22 +58,22 @@ router.get("/test", requireAuth(), (req, res) => {
 });
 
 router.get("/upload", uploadFile);
-
 router.post("/chats", requireAuth(), listChats);
-
 router.get("/userchats", requireAuth(), createOrUpdateUserChats);
-
 router.get("/chats/:id", requireAuth(), getChatsById);
-
 router.put("/chats/:id", requireAuth(), updateChatsByID);
 
-router.use((err, req, res, next) => {
+// Error handling middleware
+app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(401).send("Unauthorized!");
 });
 
-router.use(express.static(path.join(__dirname, "../client")));
-router.get("*", (req, res) => {
+// Static file serving
+app.use(express.static(path.join(__dirname, "../client")));
+
+// Catch-all route
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client", "index.html"));
 });
 
