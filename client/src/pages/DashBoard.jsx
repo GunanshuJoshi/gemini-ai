@@ -1,18 +1,22 @@
 import React from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
+import { useAuth } from "@clerk/clerk-react";
 
 const DashBoard = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   const mutation = useMutation({
     mutationFn: async (text) => {
+      const token = await getToken();
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/chats`, {
         method: "POST",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ text }),
       });
