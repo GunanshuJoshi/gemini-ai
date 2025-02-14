@@ -60,7 +60,6 @@ const PromptInput = ({ data }) => {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
-            
           },
           body: JSON.stringify({
             question: question || undefined,
@@ -129,14 +128,12 @@ const PromptInput = ({ data }) => {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* Loading State */}
       {img.isLoading && (
         <div className="flex items-center justify-center p-4">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500" />
         </div>
       )}
 
-      {/* Image Preview */}
       {img.db?.filePath && (
         <div className="relative inline-block">
           <button
@@ -155,7 +152,6 @@ const PromptInput = ({ data }) => {
         </div>
       )}
 
-      {/* Chat Messages */}
       {question && (
         <div className="user bg-blue-500/10 p-4 rounded-lg">{question}</div>
       )}
@@ -174,7 +170,7 @@ const PromptInput = ({ data }) => {
           onSubmit={handleSubmit}
           ref={formRef}
         >
-          <Upload setImg={setImg} />
+          <Upload setImg={setImg} className="justify-center" />
           <input id="file" type="file" multiple={false} hidden />
           <input
             className="flex-auto bg-transparent border-0 focus:outline-none text-white placeholder-gray-400"

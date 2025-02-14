@@ -89,7 +89,7 @@ const DashBoard = () => {
             className="absolute right-4 top-1/2 -translate-y-1/2"
           >
             <img
-              src="arrow.png"
+              src="/arrow.png"
               alt="Send"
               className="w-6 h-6 hover:scale-110 transition-transform"
             />

@@ -25,7 +25,7 @@ const ChatList = () => {
     <div className="flex flex-col h-full  bg-[#1b1f30] text-gray-100 rounded-lg p-4">
       <div className="mb-6">
         <h1 className="font-bold text-xl mb-4">Dashboard</h1>
-        <div className="flex flex-col gap-3 ">
+        <div className="flex flex-col ml-5 gap-3 ">
           <Link
             to="/"
             className="flex items-center   rounded-lg hover:bg-[#1d2539] transition-colors"
@@ -42,23 +42,27 @@ const ChatList = () => {
       </div>
 
       <div className="border-t border-gray-700 pt-4">
-        <h2 className="font-bold text-lg mb-3 flex items-center gap-2">
+        <h2 className="font-bold  text-lg mb-3 flex items-center gap-2">
           Recent Chats
         </h2>
-        <div className="flex flex-col gap-2 overflow-y-auto max-h-[calc(100vh-250px)]">
+        <div className="flex flex-col ml-2 gap-2 overflow-y-auto max-h-[calc(100vh-250px)] scrollbar-hide">
           {isPending
             ? "Loading..."
             : error
             ? "Something went wrong..."
-            : data?.map((i) => (
-                <Link
-                  key={i._id}
-                  className="flex items-center  gap-2 p-3 rounded-lg bg-[#1d2539] hover:bg-[#2d3649] transition-colors"
-                  to={`/dashboard/chats/${i._id}`}
-                >
-                  <span className="text-white ">{i.title}</span>
-                </Link>
-              ))}
+            : data.length === 0
+            ? "No data available"
+            : data
+                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                .map((i) => (
+                  <Link
+                    key={i._id}
+                    className="flex items-center gap-2 p-3 rounded-lg bg-[#1d2539] hover:bg-[#2d3649] transition-colors"
+                    to={`/dashboard/chats/${i._id}`}
+                  >
+                    <span className="text-white">{i.title}</span>
+                  </Link>
+                ))}
         </div>
       </div>
 
