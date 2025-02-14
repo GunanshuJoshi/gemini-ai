@@ -21,20 +21,18 @@ const DashboardLayout = () => {
     );
 
   return (
-    <div className="min-h-screen bg-[#101828] text-white relative">
-      {/* Toggle Button - Always visible on mobile */}
+    <div className="h-auto bg-[#101828] text-white">
       <button
         onClick={() => setIsChatListOpen(!isChatListOpen)}
-        className="fixed top-4 left-4 z-50 p-2 bg-blue-600 rounded-lg md:hidden"
+        className="fixed top-5 left-5 z-50 p-2 bg-blue-600 rounded-lg md:hidden"
       >
         {isChatListOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
-      <div className="flex flex-row h-screen">
-        {/* ChatList - Hidden by default on mobile, toggleable */}
+      <div className="flex flex-row h-auto">
         <div
           className={`${
-            isChatListOpen ? 'translate-x-0' : '-translate-x-full'
+            isChatListOpen ? "translate-x-0" : "-translate-x-full"
           } fixed md:relative md:translate-x-0 z-40 w-80 h-full transition-transform duration-300 ease-in-out bg-[#101828] border-r border-gray-700`}
         >
           <div className="pt-16 md:pt-4 px-4">
@@ -42,17 +40,13 @@ const DashboardLayout = () => {
           </div>
         </div>
 
-        {/* Main Content */}
         <div className="flex-1 w-full md:w-auto p-4 md:p-6">
-          <div className="max-w-6xl mx-auto">
-            <Outlet />
-          </div>
+          <Outlet />
         </div>
 
-        {/* Overlay for mobile */}
         {isChatListOpen && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+            className="inset-0 bg-black bg-opacity-50 z-30 md:hidden"
             onClick={() => setIsChatListOpen(false)}
           />
         )}
