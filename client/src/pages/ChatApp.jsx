@@ -23,7 +23,7 @@ const ChatApp = () => {
   return (
     <div className="h-screen flex flex-col w-full items-center">
       <div className="h-full w-full flex flex-col items-center ">
-        <div className="chat w-1/2 h-full flex flex-col items-center   scrollbar-hide rounded-2xl">
+        <div className="chat sm:w-full lg:w-1/2  h-full flex flex-col items-center   scrollbar-hide rounded-2xl">
           <div className="w-full h-full overflow-y-auto scrollbar-hide px-4">
             <div className="flex flex-col gap-2">
               {isPending

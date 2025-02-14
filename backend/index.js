@@ -59,8 +59,8 @@ router.get("/test", (req, res) => {
 });
 
 router.get("/upload", uploadFile);
-router.post("/chats", requireAuth, listChats);
-router.get("/userchats", requireAuth, createOrUpdateUserChats);
+router.post("/chats", requireAuth(), listChats);
+router.get("/userchats", requireAuth(), createOrUpdateUserChats);
 router.get("/chats/:id", requireAuth(), getChatsById);
 router.put("/chats/:id", requireAuth(), updateChatsByID);
 
