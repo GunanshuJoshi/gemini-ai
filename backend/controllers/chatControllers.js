@@ -3,41 +3,48 @@ import UserChats from "../models/userChats.js";
 
 // ✅ Create or Update Chat
 export const listChats = async (req, res) => {
-  try {
-    const userId = req.auth.userId;
-    const { text } = req.body;
+  const userId = req.auth.userId;
+  const { text } = req.body;
 
-    // Create a new chat entry
+  try {
     const newChat = new Chat({
-      userId,
+      userId: userId,
       history: [{ role: "user", parts: [{ text }] }],
     });
 
     const savedChat = await newChat.save();
     console.log("✅ Chat saved:", savedChat);
 
-    let userChat = await UserChats.find({ userId });
+    const userChats = await UserChats.find({ userId: userId });
 
-    if (!userChat) {
+    if (!userChats.length) {
       console.log("🔹 Creating new UserChats entry...");
-      const newUserChat = new UserChats({
-        userId,
-        chats: [{ _id: savedChat._id, title: text.substring(0, 40) }],
+      const newUserChats = new UserChats({
+        userId: userId,
+        chats: [
+          {
+            _id: savedChat._id,
+            title: text.substring(0, 40),
+          },
+        ],
       });
 
-      await newUserChat.save();
+      await newUserChats.save();
     } else {
       await UserChats.updateOne(
-        { userId },
+        { userId: userId },
         {
           $push: {
-            chats: { _id: savedChat._id, title: text.substring(0, 40) },
+            chats: {
+              _id: savedChat._id,
+              title: text.substring(0, 40),
+            },
           },
         }
       );
     }
 
-    return res.status(201).json({ chatId: savedChat._id });
+    res.status(201).json({ chatId: savedChat._id });
   } catch (error) {
     console.error("❌ Error creating chat:", error);
     return res.status(500).json({ error: "Error creating chat!" });

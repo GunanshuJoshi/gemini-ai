@@ -21,11 +21,11 @@ const DashBoard = () => {
       console.log("🚀 ~ mutationFn: ~ res:", json);
       return json;
     },
-    onSuccess: (id) => {
-      console.log("🚀 ~ DashBoard ~ id:", id);
+    onSuccess: ({ chatId }) => {
+      console.log("🚀 ~ DashBoard ~ id:", chatId);
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["userChats"] });
-      navigate(`/dashboard/chats/${id}`);
+      navigate(`/dashboard/chats/${chatId}`);
     },
     onError: (error) => {
       console.log("🚀 ~ DashBoard ~ error:", error);
