@@ -2,11 +2,12 @@ import Chat from "../models/chat.js";
 import UserChats from "../models/userChats.js";
 
 // ✅ Create or Update Chat
-export const listChats = async (req, res) => {
-  const userId = req.auth.userId;
-  const { text } = req.body;
-
+export const listChats = async (req, res, requireAuth) => {
   try {
+    await requireAuth();
+    const userId = req.auth.userId;
+    const { text } = req.body;
+
     // Create a new chat entry
     const newChat = new Chat({
       userId,
@@ -57,7 +58,7 @@ export const getChatsById = async (req, res) => {
       return res.status(404).json({ error: "Chat not found!" });
     }
 
-    return res.status(200).json(chat || []);
+    return res.status(200).json(chat);
   } catch (error) {
     console.error("❌ Error fetching chat:", error);
     return res.status(500).json({ error: "Error fetching chat!" });
