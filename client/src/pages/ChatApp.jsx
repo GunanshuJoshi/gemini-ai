@@ -5,16 +5,18 @@ import { useParams } from "react-router";
 import Markdown from "react-markdown";
 import { IKImage } from "imagekitio-react";
 const ChatApp = () => {
+  const { getToken } = useAuth();
   const { id } = useParams();
-  console.log("🚀 ~ ChatApp ~ id:", id);
   const { isPending, error, data } = useQuery({
     queryKey: ["chat", id],
-    queryFn: () => {
+    queryFn: async () => {
+      const token = await getToken();
       return fetch(`${import.meta.env.VITE_BACKEND_URL}/api/chats/${id}`, {
         method: "GET",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       }).then((res) => res.json());
     },
