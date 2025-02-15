@@ -30,7 +30,10 @@ const HomePage = () => {
           </h3>
           <button
             className="cursor-pointer bg-violet-700 px-6 py-3 rounded-2xl hover:bg-violet-800 font-bold text-xl sm:text-2xl text-white transition-colors duration-300"
-            onClick={() => navigate("/dashboard")}
+            onClick={() => {
+              console.log("navigate to dashboard");
+              navigate("/dashboard");
+            }}
           >
             Get Started →
           </button>

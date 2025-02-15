@@ -25,7 +25,7 @@ const ChatList = () => {
 <div className="flex flex-col h-full gap-3 bg-[#1b1f30] text-gray-100 rounded-lg p-4">
   {/* Dashboard Header */}
   <div className="gap-3 flex flex-col">
-    <h1 className="font-bold text-xl">Dashboard</h1>
+    <h1 className="font-bold text-xl text-sky-300">Dashboard</h1>
     <div className="flex flex-col ml-5 gap-3">
       <Link
         to="/"
@@ -42,10 +42,8 @@ const ChatList = () => {
     </div>
   </div>
 
-  {/* Recent Chats Section */}
   <div className="border-t border-gray-700 pt-4 flex flex-col flex-grow">
-    <h2 className="font-bold text-lg flex items-center gap-2">Recent Chats</h2>
-    {/* Scrollable Chats List */}
+    <h2 className="font-bold text-lg flex items-center gap-2 text-sky-300">Recent Chats</h2>
     <div className="flex flex-col ml-2 gap-2 overflow-y-auto max-h-[300px] scrollbar-hide">
       {isPending
         ? "Loading..."

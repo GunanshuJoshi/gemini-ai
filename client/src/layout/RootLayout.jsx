@@ -20,7 +20,7 @@ const RootLayout = () => {
   return (
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
       <QueryClientProvider client={queryClient}>
-        <div className="rootLayout flex flex-col h-auto lg:h-screen w-full bg-gray-900">
+        <div className="rootLayout flex flex-col lg:h-screen scrollbar-hide md:min-h-max w-full bg-gray-900">
           <header className="flex flex-row justify-between px-20 py-5 sm:sticky md:sticky">
             <Link to="/" className="flex items-center cursor-pointer">
               <img

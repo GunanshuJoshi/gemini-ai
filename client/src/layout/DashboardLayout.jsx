@@ -21,7 +21,7 @@ const DashboardLayout = () => {
     );
 
   return (
-    <div className="h-auto bg-[#101828] text-white">
+    <div className="h-full bg-[#101828] text-white">
       <button
         onClick={() => setIsChatListOpen(!isChatListOpen)}
         className="fixed top-5 left-5 z-50 p-2 bg-blue-600 rounded-lg md:hidden"

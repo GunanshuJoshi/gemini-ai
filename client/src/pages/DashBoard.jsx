@@ -78,15 +78,18 @@ const DashBoard = () => {
         </div>
       </div>
 
-      <div className="justify-end">
-        <form className="relative max-w-2xl mx-auto" onSubmit={handleSubmit}>
+      <div className="justify-end ">
+        <form
+          className="relative max-w-2xl mx-auto flex w-full outline-0 p-4 pr-12 rounded-xl bg-[#1d2539] text-gray-200 placeholder-gray-400  focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 transition-all"
+          onSubmit={handleSubmit}
+        >
           <input
             type="text"
             name="text"
             placeholder="Ask me anything..."
-            className="w-full outline-0 p-4 pr-12 rounded-xl bg-[#1d2539] text-gray-200 placeholder-gray-400  focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 transition-all"
+            className="flex-grow"
           />
-          <button type="submit" className="absolute  -translate-y-1/2">
+          <button type="submit" className="">
             <img
               src="/arrow.png"
               alt="Send"
