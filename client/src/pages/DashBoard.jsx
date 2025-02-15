@@ -89,7 +89,7 @@ const DashBoard = () => {
             placeholder="Ask me anything..."
             className="flex-grow"
           />
-          <button type="submit" className="">
+          <button type="submit" className="hover:scale-105">
             <img
               src="/arrow.png"
               alt="Send"
