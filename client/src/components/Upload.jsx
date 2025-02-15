@@ -61,7 +61,7 @@ const Upload = ({ setImg }) => {
     fileReader.readAsDataURL(file);
   };
   return (
-    <div>
+    <div className="flex flex-row items-center">
       <IKContext
         urlEndpoint={urlEndpoint}
         publicKey={publicKey}
@@ -79,7 +79,7 @@ const Upload = ({ setImg }) => {
           ref={uploadIcon}
         />
         <label onClick={() => uploadIcon.current.click()}>
-          <img className="cursor-pointer w-5 " src="/attachment.png" alt="" />
+          <img className="cursor-pointer w-5" src="/attachment.png" alt="" />
         </label>
       </IKContext>
     </div>

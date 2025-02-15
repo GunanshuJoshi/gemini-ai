@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router";
 import {
   ClerkProvider,
@@ -20,8 +20,8 @@ const RootLayout = () => {
   return (
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
       <QueryClientProvider client={queryClient}>
-        <div className="rootLayout flex flex-col min-h-screen w-full bg-gray-900">
-          <header className="flex flex-row justify-between px-20 my-5">
+        <div className="rootLayout flex flex-col lg:h-screen scrollbar-hide md:min-h-max w-full bg-gray-900">
+          <header className="flex flex-row justify-between px-20 py-5 sm:sticky md:sticky">
             <Link to="/" className="flex items-center cursor-pointer">
               <img
                 className="bg-transparent w-20"
@@ -56,7 +56,7 @@ const RootLayout = () => {
               </SignedOut>
             </div>
           </header>
-          <main className="w-full flex-1 overflow-hidden ">
+          <main className="w-full flex-1 overflow-hidden">
             <Outlet />
           </main>
         </div>

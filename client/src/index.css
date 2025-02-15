@@ -39,10 +39,10 @@
 }
 
 .user {
-  @apply m-2 px-5 py-2 bg-[#1d2539] rounded-2xl text-right self-end max-w-[70%] min-h-auto;
+  @apply  px-5 py-2 bg-[#1d2539] rounded-2xl text-right self-end ;
 }
 
 .message{
-  @apply m-2 px-5 py-2  rounded-2xl text-left self-start;
+  @apply  px-5 py-2  rounded-2xl text-left self-start;
 
 }
