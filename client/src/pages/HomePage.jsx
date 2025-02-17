@@ -23,10 +23,10 @@ const HomePage = () => {
             Powered By Gemini AI
           </h2>
           <h3 className="text-lg sm:text-xl text-left max-w-[60%] text-stone-100 ">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Voluptatibus modi voluptatum vel minus in autem corporis. Ea qui ut
-            alias earum numquam voluptate eligendi ex voluptatibus. Odit
-            excepturi similique architecto.
+            🚀 A MERN app powered by Google’s Gemini AI with 🔍 image
+            recognition, featuring 🔑 Clerk authentication, 🎨 Tailwind CSS for
+            a beautiful UI, and ⚡ React Query for a seamless experience. It
+            also integrates 🖼️ ImageKit for efficient image handling.
           </h3>
           <button
             className="cursor-pointer bg-violet-700 px-6 py-3 rounded-2xl hover:bg-violet-800 font-bold text-xl sm:text-2xl text-white transition-colors duration-300 z-10"
